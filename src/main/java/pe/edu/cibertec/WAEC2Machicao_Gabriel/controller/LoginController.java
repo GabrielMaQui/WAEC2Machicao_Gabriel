@@ -42,10 +42,11 @@ public class LoginController {
     @GetMapping("/dashboard")
     public String dashboard(HttpServletRequest request){
         HttpSession session = request.getSession();
-        UserDetails userDetails = (UserDetails) SecurityContextHolder
-                .getContext().getAuthentication().getPrincipal();
-        UsuarioSecurity usuarioSecurity = (UsuarioSecurity) userDetails;
-        session.setAttribute("nomusuario", usuarioSecurity.getNombre());
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UsuarioSecurity usuario = (UsuarioSecurity) userDetails;
+        String nombre = usuario.getNombre();
+
+        session.setAttribute("usuario", nombre);
         return "backoffice/auth/home";
     }
 }
