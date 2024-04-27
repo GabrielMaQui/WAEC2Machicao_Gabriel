@@ -21,6 +21,7 @@ public class UsuarioService implements IUsuarioService{
 
     @Override
     public Usuario findUserByNomUsuario(String nomusuario) {
+
         return usuarioRepository.findByNomusuario(nomusuario);
     }
 
@@ -29,7 +30,7 @@ public class UsuarioService implements IUsuarioService{
         usuario.setPassword(bCryptPasswordEncoder.encode(
                 usuario.getPassword()));
         usuario.setActivo(true);
-        //Buscar el rol que le compete al usuario
+
         Rol usuarioRol = rolRepository.findByNomrol("USER");
         usuario.setRoles(new HashSet<>(Arrays.asList(usuarioRol)));
         return usuarioRepository.save(usuario);
