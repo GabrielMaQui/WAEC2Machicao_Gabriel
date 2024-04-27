@@ -21,7 +21,6 @@ public class UsuarioService implements IUsuarioService{
 
     @Override
     public Usuario findUserByNomUsuario(String nomusuario) {
-
         return usuarioRepository.findByNomusuario(nomusuario);
     }
 
@@ -37,7 +36,9 @@ public class UsuarioService implements IUsuarioService{
     }
 
     @Override
-    public List<Usuario> listarUsuarios() {
-        return List.of();
+    public void actualizarPassword(String password, String nomusuario) {
+        usuarioRepository.actualizarUsuario(
+                bCryptPasswordEncoder.encode(password), nomusuario
+        );
     }
 }

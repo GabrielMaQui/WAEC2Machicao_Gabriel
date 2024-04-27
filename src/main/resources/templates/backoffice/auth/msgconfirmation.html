@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head th:replace="~{layout::head}">
+    <meta charset="UTF-8">
+    <title>Confirmación</title>
+</head>
+<body>
+<div class="card mx-auto">
+    <h5 class="card-header">Se ha realizado el cambio de contraseña </h5>
+    <div class="card-body">
+        <form th:action="@{/logout}" method="post" class="d-flex" role="search">
+            <button class="btn btn-light" type="submit">Cerrar Sesión</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

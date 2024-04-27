@@ -8,5 +8,6 @@ public interface IUsuarioService {
 
     Usuario findUserByNomUsuario(String nomusuario);
     Usuario guardarUsuario(Usuario usuario);
-    List<Usuario> listarUsuarios();
+    void actualizarPassword(String password, String nomusuario);
+
 }
