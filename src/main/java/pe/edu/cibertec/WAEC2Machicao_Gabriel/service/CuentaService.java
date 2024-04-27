@@ -19,7 +19,7 @@ public class CuentaService implements ICuentaService {
     }
 
     @Override
-    public void registerProducto(Cuenta cuenta) {
+    public void registerCuenta(Cuenta cuenta) {
         cuentaRepository.save(cuenta);
     }
 }
