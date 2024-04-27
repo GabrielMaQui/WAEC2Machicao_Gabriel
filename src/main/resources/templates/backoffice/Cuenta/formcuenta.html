@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout::head">
+    <meta charset="UTF-8">
+    <title>Cuentas</title>
+</head>
+<body>
+<script th:src="@{/js/web/backoffice/cuenta/formcuenta.js}" type="text/javascript"></script>
+<nav th:replace="layout::menu"></nav>
+<div class="card">
+    <div class="card-header text-bg-danger">
+        Mantenimiento de cuentas:
+    </div>
+    <div class="card-body">
+        <button id="btnagregar" type="button" class="btn btn-primary">Agregar</button>
+        <hr />
+        <div id="divmensaje"></div>
+        <table id="tblcuenta" class="table">
+            <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">NR° de Cuenta</th>
+                <th scope="col">Fecha de Registro </th>
+                <th scope="col">Fecha de Vencimiento</th>
+                <th scope="col">Dueño</th>
+                <th scope="col">Actualizar</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="cuenta : ${listcuenta}">
+                <td th:text="${cuenta.idcuenta}"></td>
+                <td th:text="${cuenta.nrocuenta}"></td>
+                <td th:text="${cuenta.fecharegistro}"></td>
+                <td th:text="${cuenta.fechavencimiento}"></td>
+                <td th:text="${cuenta.persona.nompersona}"></td>
+                <td>
+                    <button type="button" class="btn btn-primary btnactualizar"
+                            th:data-cuncod="${cuenta.idcuenta}"
+                            th:data-cunnro="${cuenta.nrocuenta}"
+                            th:data-cunfechar="${cuenta.fecharegistro}"
+                            th:data-cunfechav="${cuenta.fechavencimiento}"
+                            th:data-cunperso="${cuenta.persona.nompersona}"
+                            >Actualizar</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal registro y actualización de producto -->
+<div class="modal fade" id="modalproduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Cuenta</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtnrocuenta"
+                           placeholder="name@example.com">
+                    <label for="txtnrocuenta">Ingrese el numero de Cuenta</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="date" class="form-control" id="txtfecharegistro"
+                           placeholder="name@example.com">
+                    <label for="txtfecharegistro">Ingrese la fecha de registro</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="date" class="form-control" id="txtfechavencimiento"
+                           placeholder="name@example.com">
+                    <label for="txtfechavencimiento">Ingrese la fecha de vencimiento</label>
+                </div>
+
+                <div class="mb-3">
+                    <label for="cbopersona" class="form-label">Seleccione una persona</label>
+                    <select id="cbopersona" class="form-select"></select>
+
+                </div>
+
+                <input type="hidden" id="hddcuentaid" value="0">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btnguardar">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
