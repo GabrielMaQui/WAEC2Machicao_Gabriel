@@ -6,6 +6,5 @@ import java.util.List;
 
 public interface ICuentaService {
     List<Cuenta> listarCuentas();
-
     void registerCuenta(Cuenta cuenta);
 }
